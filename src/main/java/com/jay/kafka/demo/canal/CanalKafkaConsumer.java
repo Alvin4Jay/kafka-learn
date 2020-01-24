@@ -1,4 +1,4 @@
-package com.jay.kafka.demo;
+package com.jay.kafka.demo.canal;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
@@ -9,13 +9,14 @@ import java.util.Collections;
 import java.util.Properties;
 
 /**
+ * Kafka消费者消费Canal从MySQL binlog抽取出的消息
  * @author xuweijie
  */
-public class Consumer {
+public class CanalKafkaConsumer {
 
     private static final String BROKER_LIST = "localhost:9092";
-    private static final String TOPIC = "topic-demo-2";
-    private static final String GROUP = "group.demo";
+    private static final String TOPIC = "xuweijie.test";
+    private static final String GROUP = "test";
 
     public static void main(String[] args) {
         Properties properties = new Properties();

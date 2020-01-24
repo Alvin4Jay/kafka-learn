@@ -1,4 +1,4 @@
-package com.jay.kafka.demo;
+package com.jay.kafka.chapter1;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -8,7 +8,7 @@ import java.util.Properties;
 /**
  * @author xuweijie
  */
-public class Producer {
+public class ProducerFastStart {
 
     private static final String BROKER_LIST = "localhost:9092";
     private static final String TOPIC = "topic-demo-2";
