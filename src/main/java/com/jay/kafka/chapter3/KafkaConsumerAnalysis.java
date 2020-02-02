@@ -5,9 +5,11 @@ import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.common.TopicPartition;
 import org.apache.kafka.common.serialization.StringDeserializer;
 
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Properties;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -36,7 +38,8 @@ public class KafkaConsumerAnalysis {
     public static void main(String[] args) {
         Properties properties = initConfig();
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(properties);
-        consumer.subscribe(Collections.singleton(TOPIC));
+        // consumer.subscribe(Collections.singleton(TOPIC)); // 订阅特定topic
+        consumer.assign(Arrays.asList(new TopicPartition(TOPIC, 0))); // 订阅特定topic的特定分区
 
         try {
             while (isRunning.get()) {
