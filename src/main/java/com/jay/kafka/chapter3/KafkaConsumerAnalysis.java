@@ -44,11 +44,16 @@ public class KafkaConsumerAnalysis {
         try {
             while (isRunning.get()) {
                 ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(1000));
-                for (ConsumerRecord<String, String> record : records) {
-                    System.out.println("topic=" + record.topic() + ", partition=" + record.partition()
-                            + ", offset=" + record.offset() + ",");
-                    System.out.println("key=" + record.key() + ", value=" + record.value());
-                    // do something to process record.
+                //for (ConsumerRecord<String, String> record : records) {
+                //    System.out.println("topic=" + record.topic() + ", partition=" + record.partition()
+                //            + ", offset=" + record.offset() + ",");
+                //    System.out.println("key=" + record.key() + ", value=" + record.value());
+                //    // do something to process record.
+                //}
+                for (TopicPartition partition : records.partitions()) {
+                    for (ConsumerRecord<String, String> record : records.records(partition)) {// 按照分区获取消息
+                        System.out.println(record.partition() + " : " + record.value());
+                    }
                 }
             }
         } catch (Exception e) {
