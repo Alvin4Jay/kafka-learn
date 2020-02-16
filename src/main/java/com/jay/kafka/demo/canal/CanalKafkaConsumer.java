@@ -10,6 +10,7 @@ import java.util.Properties;
 
 /**
  * Kafka消费者消费Canal从MySQL binlog抽取出的消息
+ *
  * @author xuweijie
  */
 public class CanalKafkaConsumer {
