@@ -3,6 +3,8 @@ package com.jay.kafka.chapter4;
 import kafka.admin.TopicCommand;
 
 /**
+ * TopicCommand示例
+ *
  * @author xuweijie
  */
 public class TopicCommandUtil {
